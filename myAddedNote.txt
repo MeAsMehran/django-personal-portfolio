@@ -1,0 +1,18 @@
+for starting a django project: django-admin startproject projectName
+
+for creating apps:
+in terminal go to project directory
+blog and portfolio folders are apps  => we used python manage.py startapp blog and portfolio for creating them
+personal_portfolio folder is our project
+
+python manage.py migrate
+python manage.py makemigrations
+after creating a migration we have a folder in our project folder named migration which 0001_initial.py is the file that shows our attributes and class we created before
+
+if we want to go to localhost:8000/admin, there is a page with a username and password which we dont know non of them.
+so its our job to make username and password for admin login:
+python manage.py createsuperuser
+so for this command you need to enter username and password
+- if you want to change the password you can go with: python manage.py changepassword username
+
+

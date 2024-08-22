@@ -1,0 +1,54 @@
+
+{% extends 'portfolio/base.html' %} <!--first we extend the file(template) which we create to shows some stuff like navbar and html and etc.-->
+
+{% block content %}         <!--then we start a block with block and use content variable as we have defined it in our base.html file after navbar
+                            we close our block after our homepage codes with endblock-->
+                            <!--Another important thing is the variable name(content in here) should be as same as the name of the variable in base.html file-->
+
+
+
+    
+    <h1>welcome to learn code by mehran</h1>
+
+<!--the static url in setting is related to this section so if you want to create a folder for this subject you have to create it with exact name of given value for static url in setting file-->
+{% load static %}
+<img src="{% static 'portfolio/backiee-269692.jpg' %}" length="1000" width="1000" style="display: block; margin: 0 auto">      <!--when ever you want to use static in your codes you have to add {% load static %}-->
+
+<a href="{% static 'portfolio/resume.pdf' %}">Resume</a><br><br>      <!--everyone can download your resume pdf or another thing here-->
+
+<a href="{% url 'blog:blogUrls' %}">Blogs</a>       <!--the blog:blogUrls => we used blog app name in blog urls file and get the blog page variable name-->
+
+<h2>purpose</h2>
+<p>in this site we have a lot of courses which makes you a professional programmer</p>
+
+{{ projects }}
+<br><br>
+
+{% for i in projects %}
+
+
+{% if i.url %}                                          <!--checks if project has an url or not, if has one shows the title and url-->
+    <a href="{{ i.url }}"><h2>{{ i.title }}</h2></a>
+{% endif %}
+
+    <p>{{ i.description }}</p>
+
+    {{ i.image }}<br>   <!--shows the image url-->
+    <img src="{{ i.image.url }}" height=100 width=100>  <!--shows the image-->
+
+    
+
+{% endfor %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

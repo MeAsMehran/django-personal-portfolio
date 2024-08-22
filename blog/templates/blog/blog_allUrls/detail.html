@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}     <!--i've explained this in homepage.html file-->
+
+{% block content %}
+
+{{ id }} <br>
+
+<h1>{{ blog.linkTitle }}</h1>
+<br>
+<h2>{{ blog.date|date:'F jS Y'}}</h2>
+<br>
+
+{{ blog.shortInfo|safe }}   <!--\safe for applying all the tags which are used in shortInfo in admin section-->
+
+
+{% endblock %}

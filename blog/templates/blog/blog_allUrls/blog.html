@@ -1,0 +1,28 @@
+{% extends 'portfolio/base.html' %}     <!--i've explained this in homepage.html file-->
+
+{% block content %}
+
+<h1>hello blog part</h1>
+
+
+{{ blogs }}
+<br><br><br>    
+<h2>mehran has writtern {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>     <!--blog.count counts the number of blogs, {{ blogs.count|pluralize }} shows if blog need an s at the end or not-->   
+
+<!--here we get all the blogs and address them with their ids-->
+
+{% for b in blogs %}
+
+    <a href="{% url 'blog:detail' b.id %}"><h2>{{b.linkTitle}}</h2></a>     <!--the blog in blog:detail refers to urls.py app_name = 'blog' => this make the urls more certain and if we not make it certain it may open another page-->
+    {{ b.date}} <br>
+    {{ b.date|date:'D, N j Y' }}            <!--see all the django date format document https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#date -->
+
+    <!-- <p><h3>{{ b.shortInfo }}</h3></p> <br>  -->
+    <p><h3>{{ b.shortInfo|safe|truncatewords:50 }}</h3></p> <br>     <!--|truncatewords:10 will shows only 10 word of the Info: we use it when the info is big; safe is for formatting the text, we write a text in admin and use some html tags like <b></b> and then put safe in here to show the changes-->
+    <!--the |striptags disables all the html tags we used in admin -->
+    {% endfor %}
+
+
+{% endblock %}
+
+
