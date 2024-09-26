@@ -25,14 +25,14 @@ SECRET_KEY = 'django-insecure-9wo=-p-(lz&x$d3r)ma0w1ox)b1onf&)m_cn6l)f0=x1!!rag*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mehran100.pythonanywhere.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',          #this module will help us with sign up and login part#
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -53,6 +53,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'personal_portfolio.urls'
 
+
+# I ADDED HERE: IN HERE WE CAN ADD OUR TEMPLATES IN 'DIRS': [] or we can use our templates by their path each time we want to use
+# THE REASON WE ADD THE TEMPLATES FOLDER PATH IN HERE IS WE CAN HAVE ACCESS TO THEM BY USING THEIR FILE NAME AND THERE IS NO NEED TO USE THEIR PATH EVERY TIME
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,10 +78,23 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# I ADDED HERE: WE CAN USE DJANGO DEFAULT DATABASE OR WE CAN USE ANOTHER DATA BASES LIKE QOVERY AND SET OUR DATA BASE HERE MANUALLY
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgreql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -114,10 +130,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -125,9 +138,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'portfolio/static'
+
+
 # $$$$$$$$$$$$$$$$$$$$$$$
 # for accessing to media files
-MEDIA_URL = 'media/'    # the address should ends with slash /   
+MEDIA_URL = 'media/'    # the address should ends with slash /
 
 
 # $$$$$$$$$$$$$$$$$$$$$$$

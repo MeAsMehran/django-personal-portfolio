@@ -14,7 +14,9 @@ def blog_allUrls(request):
 
 
 def detail(request, blog_id):
-    
+    # For finding an object we can use primary key(any created object has a special key number for accessing)
+    # get_object_or_404 should be imported (from django.shortcuts import get_object_or_404) for finding an object
+    # get_object_or_404(models.py class name, pk=)
     blog = get_object_or_404(BlogModel, pk=blog_id)     # get_object_or_404() is a method which check if our BlogModel site is available or not; pk(primary key) In Django models, each model has a primary key field that uniquely identifies each record in the database table.
     
     return render(request, 'blog/blog_allUrls/detail.html', {'id':blog_id, 'blog':blog})
